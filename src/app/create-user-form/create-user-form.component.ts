@@ -4,6 +4,7 @@ import {NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
+import {User} from "../interfaces/user-interface";
 
 @Component({
   selector: 'app-create-user-form',

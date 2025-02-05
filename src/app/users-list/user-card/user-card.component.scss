@@ -7,9 +7,7 @@
   margin: 5px;
   padding: 10px
 }
-
-.click {
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 25px 54px 25px 54px;
-  border: 1px solid #F0BA4E;
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
 }

@@ -1,17 +1,21 @@
-import {ChangeDetectionStrategy, Component, inject} from "@angular/core";
+import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output} from "@angular/core";
 import {AsyncPipe, NgFor} from "@angular/common";
 import {UsersApiService} from "../users-api.service";
 import {UserCardComponent} from "./user-card/user-card.component";
 import {UsersService} from "../users.service";
-import {CreateUserFormComponent} from "../create-user-form/create-user-form.component";
 import {CreateUser, User} from "../interfaces/user-interface";
+import {MatIconModule} from "@angular/material/icon";
+import { MatButtonModule} from "@angular/material/button";
+import {MatDialog} from "@angular/material/dialog";
+import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog.component";
+import {DeleteUserDialogComponent} from "./delete-user-dialog/delete-user-dialog.component";
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   standalone: true,
   styleUrl: './users-list.component.scss',
-  imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserFormComponent],
+  imports: [NgFor, UserCardComponent, AsyncPipe, MatIconModule, MatButtonModule,],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
@@ -27,9 +31,14 @@ export class UsersListComponent {
 
     this.usersService.users$.subscribe((users) => console.log(users));
   }
+
   deleteUser(id: number) {
     this.usersService.deleteUser(id);
   }
+
+  editUser(user: User) {
+  this.usersService.editUser(user);
+}
 
   public createUser(formData: CreateUser) {
     this.usersService.createUser({
@@ -41,8 +50,40 @@ export class UsersListComponent {
         name: formData.company.name,
       },
     });
-    console.log('ДАННЫЕ ФОРМЫ: ', event);
-    console.log(new Date().getTime());
+  }
+
+  @Input()
+  user!: User;
+
+  readonly dialog = inject(MatDialog);
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CreateUserDialogComponent);
+
+    dialogRef.afterClosed().subscribe((createResult: CreateUser) => {
+      // console.log('Модалка закрылась, значение формы: ', createResult);
+      if (createResult) {this.createUser(createResult);
+      }
+    });
+  }
+
+//////то что ниже эксперимент
+
+  public dialog2: MatDialog | undefined
+
+  openDeleteDialog(user: any): void {
+    // @ts-ignore
+    const dialogRef = this.dialog2.open(DeleteUserDialogComponent, {
+      width: '400px',
+      data: {user}  // Передаем пользователя в диалог
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Если пользователь подтвердил удаление, вызываем метод сервиса для удаления с сервера
+        this.usersService.deleteUser(user.id);
+      }
+    });
   }
 
 }

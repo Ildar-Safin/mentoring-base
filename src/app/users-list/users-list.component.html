@@ -1,6 +1,12 @@
-<app-create-user-form (createUser)="createUser($event)"></app-create-user-form>
 <div class="users">
   <div *ngFor="let user of usersService.users$ | async">
-    <app-user-card [user]="user" (deleteUser)="deleteUser ($event)"></app-user-card>
+    <app-user-card
+      [user]="user"
+      (deleteUser)="deleteUser($event)"
+      (editUser)="editUser($event)">
+    </app-user-card>
   </div>
 </div>
+<button mat-fab color="primary" class="button" (click)=openDialog()><mat-icon>add</mat-icon>
+</button>
+
