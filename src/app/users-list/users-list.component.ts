@@ -8,7 +8,6 @@ import {MatIconModule} from "@angular/material/icon";
 import { MatButtonModule} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog.component";
-import {DeleteUserDialogComponent} from "./delete-user-dialog/delete-user-dialog.component";
 
 @Component({
   selector: 'app-users-list',
@@ -61,29 +60,8 @@ export class UsersListComponent {
     const dialogRef = this.dialog.open(CreateUserDialogComponent);
 
     dialogRef.afterClosed().subscribe((createResult: CreateUser) => {
-      // console.log('Модалка закрылась, значение формы: ', createResult);
       if (createResult) {this.createUser(createResult);
       }
     });
   }
-
-//////то что ниже эксперимент
-
-  public dialog2: MatDialog | undefined
-
-  openDeleteDialog(user: any): void {
-    // @ts-ignore
-    const dialogRef = this.dialog2.open(DeleteUserDialogComponent, {
-      width: '400px',
-      data: {user}  // Передаем пользователя в диалог
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Если пользователь подтвердил удаление, вызываем метод сервиса для удаления с сервера
-        this.usersService.deleteUser(user.id);
-      }
-    });
-  }
-
 }
