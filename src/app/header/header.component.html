@@ -22,7 +22,7 @@
                 <div class="header-phone">
                     <img class="phone" src="/assets/Phone.svg" alt="Phone">
                     <a href="tel:+79650842929" class="no-underline">
-                        <span>+7 (965) 084-29-29</span>
+                        <span> {{'+7 (965) 084-29-29' | removeDashes}}</span>
                     </a>
                 </div>
                 <div class="header-info-container">
@@ -32,6 +32,7 @@
                         <div style="margin-left: 14px;">Пусто</div>
                     </button>
                 </div>
+              <p>{{ today | date: 'medium'}}</p>
             </div>
         </nav>
         <nav class="second-nav">

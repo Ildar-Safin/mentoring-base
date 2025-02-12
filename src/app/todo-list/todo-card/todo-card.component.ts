@@ -1,10 +1,13 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {Todo} from "../../interfaces/todo-interface";
+import {SlicePipe} from "@angular/common";
+import {TruncatePipe} from "../../pipes/truncate.pipe";
 
 @Component({
   selector: 'app-todo-card',
   standalone: true,
   templateUrl: './todo-card.component.html',
+  imports: [TruncatePipe ],
   styleUrl: './todo-card.component.scss'
 })
 

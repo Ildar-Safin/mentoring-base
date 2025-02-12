@@ -1,6 +1,7 @@
 import {Component} from "@angular/core";
-import {NgFor} from "@angular/common";
+import {CommonModule, NgFor} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {RemoveDashesPipe} from "../pipes/remove-dashes-pipe";
 
 // 1 задание
 
@@ -27,7 +28,7 @@ console.log(upperCaseSecondMenuItem);
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, CommonModule, RemoveDashesPipe],
   styleUrl: './header.component.scss'
 })
 
@@ -49,4 +50,7 @@ export class HeaderComponent {
     )
     this.isUpperCase = !this.isUpperCase
   }
+
+  today: number = Date.now();
+
 }
