@@ -1,9 +1,9 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <mat-card-title>{{$any(user).name | customUpperCase}}</mat-card-title>
-  <p>{{$any(user).email | customUpperCase}}</p>
-  <p>{{$any(user).website | customUpperCase}}</p>
-  <p>{{$any(user).company.name | uppercase }}</p>
+    <mat-card-title>{{user.name | uppercase}}</mat-card-title>
+            <p>{{user.email | uppercase}}</p>
+            <p>{{user.website | uppercase}}</p>
+            <p>{{user.company.name | uppercase}}</p>
     <mat-card-actions>
       <button mat-stroked-button (click)=openDeleteDialog()>УДАЛИТЬ</button>
       <button mat-stroked-button (click)=openDialog()>РЕДАКТИРОВАТЬ</button>
