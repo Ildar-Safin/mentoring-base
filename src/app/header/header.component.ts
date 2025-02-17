@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {CommonModule, NgFor} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {RemoveDashesPipe} from "../pipes/remove-dashes-pipe";
+import {YellowDirective} from "../directives/yellow.directive";
 
 // 1 задание
 
@@ -28,7 +29,7 @@ console.log(upperCaseSecondMenuItem);
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [NgFor, RouterLink, CommonModule, RemoveDashesPipe],
+  imports: [NgFor, RouterLink, CommonModule, RemoveDashesPipe, YellowDirective],
   styleUrl: './header.component.scss'
 })
 

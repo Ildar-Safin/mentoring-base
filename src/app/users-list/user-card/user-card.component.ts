@@ -7,12 +7,15 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {UpperCasePipe} from "@angular/common";
+import {RedDirective} from "../../directives/red.directive";
+import {ShadowDirective} from "../../directives/shadow.directive";
 
 @Component({
   selector: 'app-user-card',
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
-  imports: [MatDialogModule, MatSnackBarModule, MatCardModule, MatButtonModule, UpperCasePipe ],
+  imports: [MatDialogModule, MatSnackBarModule, MatCardModule, MatButtonModule, UpperCasePipe, RedDirective,
+    ShadowDirective ],
   standalone: true
 })
 

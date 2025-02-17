@@ -21,7 +21,10 @@
     </div>
     <mat-error>Неверно введена компания</mat-error>
   </mat-form-field>
-  <button matIconSuffix mat-raised-button [disabled]="form.invalid" [mat-dialog-close]="userWithUpdatedFields">Редактировать
+  <button matIconSuffix mat-raised-button [disabled]="form.invalid" [mat-dialog-close]="userWithUpdatedFields"
+          matTooltip="Редактировать данные пользователя"
+          [matTooltipPosition]="position.value!" matTooltipHideDelay="300">
+      Редактировать
     <mat-icon>edit</mat-icon>
   </button>
 </form>

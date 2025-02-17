@@ -5,13 +5,15 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatFormField, MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {User} from "../../interfaces/user-interface";
+import {MatTooltipModule, TooltipPosition} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-edit-user-dialog',
   templateUrl: './edit-user-dialog.component.html',
   styleUrl: './edit-user-dialog.component.scss',
   standalone: true,
-  imports: [ReactiveFormsModule, MatButtonModule, MatInputModule, MatFormField, MatIconModule, MatDialogClose],
+  imports: [ReactiveFormsModule, MatButtonModule, MatInputModule, MatFormField, MatIconModule, MatDialogClose,
+  MatTooltipModule],
 })
 export class EditUserDialogComponent {
   readonly data= inject<{ user: User }>(MAT_DIALOG_DATA);
@@ -31,5 +33,8 @@ export class EditUserDialogComponent {
       id: this.data.user.id,
     };
   }
+
+  positionOptions: TooltipPosition[] = ['below', 'above', 'left', 'right'];
+  position = new FormControl(this.positionOptions[0]);
 
 }

@@ -1,12 +1,12 @@
 <mat-card appearance="outlined">
   <mat-card-content>
     <mat-card-title>{{user.name | uppercase}}</mat-card-title>
-            <p>{{user.email | uppercase}}</p>
+            <p red>{{user.email | uppercase}}</p>
             <p>{{user.website | uppercase}}</p>
             <p>{{user.company.name | uppercase}}</p>
     <mat-card-actions>
-      <button mat-stroked-button (click)=openDeleteDialog()>УДАЛИТЬ</button>
-      <button mat-stroked-button (click)=openDialog()>РЕДАКТИРОВАТЬ</button>
+      <button shadow mat-stroked-button (click)=openDeleteDialog()>УДАЛИТЬ</button>
+      <button shadow mat-stroked-button (click)=openDialog()>РЕДАКТИРОВАТЬ</button>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>
