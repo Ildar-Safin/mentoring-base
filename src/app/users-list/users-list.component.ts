@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output} from "@angular/core";
+import {ChangeDetectionStrategy, Component, inject, Input} from "@angular/core";
 import {AsyncPipe, NgFor} from "@angular/common";
 import {UsersApiService} from "../users-api.service";
 import {UserCardComponent} from "./user-card/user-card.component";
 import {UsersService} from "../users.service";
 import {CreateUser, User} from "../interfaces/user-interface";
 import {MatIconModule} from "@angular/material/icon";
-import { MatButtonModule} from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog.component";
 

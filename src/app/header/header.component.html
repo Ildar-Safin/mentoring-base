@@ -14,11 +14,17 @@
                         <span class="white-color">{{headerItem3}}</span>
                     </a>
                     <a routerLink="users" class="menu-item">
-                        <span class="white-color">Пользователи</span>
+                        <span class="white-color">Users</span>
                     </a>
+                  <a routerLink="admin" class="menu-item">
+                    <span class="white-color">Admin</span>
+                  </a>
+                    <div class="menu-item">
+                      <button *ngIf="!isLoggedIn()" mat-raised-button color="accent" (click)="openLoginDialog()">Войти</button>
+                      <button *ngIf="isLoggedIn()" mat-raised-button color="accent" (click)="logout()">Выйти</button>
+                    </div>
                   <button (click)="changeMenuText()">Изменить текст</button>
                 </div>
-
                 <div class="header-phone">
                     <img class="phone" src="/assets/Phone.svg" alt="Phone">
                     <a href="tel:+79650842929" class="no-underline">
