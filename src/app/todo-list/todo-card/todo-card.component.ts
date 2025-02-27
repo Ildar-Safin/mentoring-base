@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {Todo} from "../../interfaces/todo-interface";
-import {SlicePipe} from "@angular/common";
 import {TruncatePipe} from "../../pipes/truncate.pipe";
 
 @Component({
