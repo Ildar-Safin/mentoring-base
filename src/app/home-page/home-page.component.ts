@@ -1,10 +1,7 @@
-import {Component} from "@angular/core";
-import {NgFor, NgIf} from "@angular/common";
-
-//  3 задание
+import { Component } from "@angular/core";
+import { NgFor, NgIf } from "@angular/common";
 
 const newPages: number[] = [5, 4, 3, 2, 1]
-
 
 @Component ({
   selector: '',
@@ -15,9 +12,7 @@ const newPages: number[] = [5, 4, 3, 2, 1]
 })
 
 export class HomePageComponent {
-
   isShowBigPicture = true;
 
   readonly newPages: number[] = newPages;
-
 }

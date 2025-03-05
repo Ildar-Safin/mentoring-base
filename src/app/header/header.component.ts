@@ -1,22 +1,19 @@
-import {Component} from "@angular/core";
-import {CommonModule, NgFor} from "@angular/common";
-import {Router, RouterLink} from "@angular/router";
-import {RemoveDashesPipe} from "../pipes/remove-dashes-pipe";
-import {YellowDirective} from "../directives/yellow.directive";
-import {UsersService} from "../users.service";
-import {MatDialog} from "@angular/material/dialog";
-import {AuthorizationDialogComponent} from "../users-list/authorization-dailog/authorization-dialog.component";
-import {MatButton, MatButtonModule} from "@angular/material/button";
+import { Component } from "@angular/core";
+import { CommonModule, NgFor } from "@angular/common";
+import { Router, RouterLink } from "@angular/router";
+import { RemoveDashesPipe } from "../pipes/remove-dashes-pipe";
+import { YellowDirective } from "../directives/yellow.directive";
+import { UsersService } from "../users.service";
+import { MatDialog } from "@angular/material/dialog";
+import { AuthorizationDialogComponent } from "../users-list/authorization-dailog/authorization-dialog.component";
+import { MatButton, MatButtonModule } from "@angular/material/button";
 
-// 1 задание
 
 const func = (value: string) => {return value}
 
 const aboutCompany: string = 'О компании';
 
 const vuzov = func(aboutCompany);
-
-// 4 задание
 
 const secondMenuItem = ['Каталог', 'Стройматериалы', 'Инструменты', 'Электрика', 'Интерьер и одежда']
 
@@ -60,10 +57,8 @@ export class HeaderComponent {
     private userService: UsersService,
     private router: Router) {}
 
-
   openLoginDialog(): void {
     const dialogRef = this.dialog.open(AuthorizationDialogComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('Диалог закрыт', result);
     });
@@ -77,5 +72,4 @@ export class HeaderComponent {
   isLoggedIn(): boolean {
     return this.userService.isLoggedIn();
   }
-
 }

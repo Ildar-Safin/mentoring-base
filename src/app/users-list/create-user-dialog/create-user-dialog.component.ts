@@ -1,18 +1,17 @@
-import {Component, EventEmitter, inject, Output} from "@angular/core";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatButtonModule} from "@angular/material/button";
-import {MatError, MatFormField, MatLabel, MatSuffix} from "@angular/material/form-field";
-import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
-import {NgIf} from "@angular/common";
-import {MatDialogRef} from "@angular/material/dialog";
+import { Component, inject } from "@angular/core";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatError, MatFormField, MatLabel, MatSuffix } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-user-dialog',
   templateUrl: './create-user-dialog.component.html',
   styleUrl: './create-user-dialog.component.scss',
   standalone: true,
-  imports: [FormsModule, MatButtonModule, MatError, MatFormField, MatIconModule, MatInputModule, MatLabel, MatSuffix, ReactiveFormsModule, NgIf]
+  imports: [FormsModule, MatButtonModule, MatError, MatFormField, MatIconModule, MatInputModule, MatLabel, MatSuffix, ReactiveFormsModule]
 })
 
 export class CreateUserDialogComponent {

@@ -1,35 +1,33 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from "@angular/core";
-import {AsyncPipe, NgFor} from "@angular/common";
-import {UsersApiService} from "../users-api.service";
-import {UserCardComponent} from "./user-card/user-card.component";
-import {CreateUser, User} from "../interfaces/user-interface";
-import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
-import {MatDialog} from "@angular/material/dialog";
-import {CreateUserDialogComponent} from "./create-user-dialog/create-user-dialog.component";
-import {UserActions} from "./store/user.actions";
-import {Store} from "@ngrx/store";
-import {selectUsers} from "./store/users.selectors";
+import { ChangeDetectionStrategy, Component, inject, Input } from "@angular/core";
+import { AsyncPipe, NgFor, NgIf } from "@angular/common";
+import { UserCardComponent } from "./user-card/user-card.component";
+import { CreateUser, User } from "../interfaces/user-interface";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialog } from "@angular/material/dialog";
+import { CreateUserDialogComponent } from "./create-user-dialog/create-user-dialog.component";
+import { UserActions } from "./store/user.actions";
+import { Store } from "@ngrx/store";
+import { selectUsers, selectUsersError, selectUsersLoading } from "./store/users.selectors";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   standalone: true,
   styleUrl: './users-list.component.scss',
-  imports: [NgFor, UserCardComponent, AsyncPipe, MatIconModule, MatButtonModule,],
+  imports: [NgFor, UserCardComponent, AsyncPipe, MatIconModule, MatButtonModule, NgIf,],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class UsersListComponent {
-  readonly userApiService = inject(UsersApiService);
   private readonly store = inject(Store);
   public readonly users$ = this.store.select(selectUsers);
+  public readonly loading$: Observable<boolean> = this.store.select(selectUsersLoading);
+  public readonly error$: Observable<string | null>= this.store.select(selectUsersError);
 
   constructor() {
-    this.userApiService.getUsers().subscribe(
-      (response: User[]) => {
-        this.store.dispatch(UserActions.set({ users: response }));
-      });
+    this.store.dispatch(UserActions.load());
   }
 
   deleteUser(id: number) {

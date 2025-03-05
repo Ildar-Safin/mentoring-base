@@ -1,10 +1,9 @@
-import {Component, EventEmitter, Output} from "@angular/core";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
-import {MatButtonModule} from "@angular/material/button";
-import {MatFormField, MatInputModule} from "@angular/material/input";
-import {MatIconModule} from "@angular/material/icon";
-import {User} from "../interfaces/user-interface";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { NgIf } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormField, MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: 'app-create-user-form',
@@ -27,7 +26,6 @@ export class CreateUserFormComponent {
   });
 
   public submitForm(): void {
-
     this.createUser.emit(this.form.value);
     this.form.reset();
   }

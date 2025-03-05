@@ -1,10 +1,10 @@
-import {Component} from "@angular/core";
-import {UsersService} from "../../users.service";
-import {MatDialogContent, MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
-import {MatButtonModule} from "@angular/material/button";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatIconModule} from "@angular/material/icon";
-import {MatInputModule} from "@angular/material/input";
+import { Component } from "@angular/core";
+import { UsersService } from "../../users.service";
+import { MatDialogContent, MatDialogRef, MatDialogTitle } from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
 
 @Component({
   selector: 'app-authorization-dialog',
@@ -30,5 +30,4 @@ export class AuthorizationDialogComponent {
     this.dialogRef.close();
     console.log('User logged in:', this.userService.getCurrentUser());
   }
-
 }

@@ -1,14 +1,14 @@
-import {Component, EventEmitter, inject, Input, Output} from "@angular/core";
-import {User} from "../../interfaces/user-interface";
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {EditUserDialogComponent} from "../edit-user-dialog/edit-user-dialog.component";
-import {DeleteUserDialogComponent} from "../delete-user-dialog/delete-user-dialog.component";
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {UpperCasePipe} from "@angular/common";
-import {RedDirective} from "../../directives/red.directive";
-import {ShadowDirective} from "../../directives/shadow.directive";
+import { Component, EventEmitter, inject, Input, Output } from "@angular/core";
+import { User } from "../../interfaces/user-interface";
+import { MatDialog, MatDialogModule } from "@angular/material/dialog";
+import { EditUserDialogComponent } from "../edit-user-dialog/edit-user-dialog.component";
+import { DeleteUserDialogComponent } from "../delete-user-dialog/delete-user-dialog.component";
+import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { UpperCasePipe } from "@angular/common";
+import { RedDirective } from "../../directives/red.directive";
+import { ShadowDirective } from "../../directives/shadow.directive";
 
 @Component({
   selector: 'app-user-card',

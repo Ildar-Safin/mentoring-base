@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from "@angular/core";
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
   name: 'removeDashes',
@@ -6,7 +6,6 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 
 export class RemoveDashesPipe implements PipeTransform {
-
   transform(value: string): string {
     return value.replace(/-/g, '');
   }

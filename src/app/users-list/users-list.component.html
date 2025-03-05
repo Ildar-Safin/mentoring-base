@@ -7,6 +7,7 @@
     </app-user-card>
   </div>
 </div>
+<ng-container *ngIf="loading$ | async">Загрузка...</ng-container>
+<ng-container *ngIf="error$ | async as error">Ошибка: {{ error }}</ng-container>
 <button mat-fab color="primary" class="button" (click)=openDialog()><mat-icon>add</mat-icon>
 </button>
-

@@ -4,3 +4,5 @@
     <app-todo-card [todo]="todo" (deleteTodo)="deleteTodo($event)"></app-todo-card>
   </div>
 </div>
+<ng-container *ngIf="loading$ | async">Загрузка...</ng-container>
+<ng-container *ngIf="error$ | async as error">Ошибка: {{ error }}</ng-container>

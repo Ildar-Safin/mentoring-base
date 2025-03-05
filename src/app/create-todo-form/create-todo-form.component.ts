@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Output} from "@angular/core";
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {NgIf} from "@angular/common";
-import {MatButtonModule} from "@angular/material/button";
-import {MatFormField, MatInputModule} from "@angular/material/input";
-import {MatIconModule} from "@angular/material/icon";
+import { Component, EventEmitter, Output } from "@angular/core";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { NgIf } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
+import { MatFormField, MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
 
 @Component({
   selector: 'app-create-todo-form',
@@ -23,7 +23,6 @@ export class CreateTodoFormComponent {
   });
 
   public submitForm(): void {
-
     this.createTodo.emit(this.form.value);
     this.form.reset();
   }

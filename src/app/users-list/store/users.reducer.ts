@@ -1,6 +1,6 @@
-import {User} from "../../interfaces/user-interface";
-import {createReducer, on} from "@ngrx/store";
-import {UserActions} from "./user.actions";
+import { User } from "../../interfaces/user-interface";
+import { createReducer, on } from "@ngrx/store";
+import { UserActions } from "./user.actions";
 
 const initialState: { users: User[]} = {
   users: [],
@@ -15,11 +15,7 @@ export const userReducer = createReducer(
   on(UserActions.edit, (state, payload) =>({
       ...state,
       users: state.users.map((user) => {
-        if (user.id === payload.user.id) {
-          return payload.user;
-        } else {
-          return user;
-        }
+        return user.id === payload.user.id ? payload.user : user;
       }),
     })),
   on(UserActions.create, (state, payload) =>({
@@ -30,5 +26,19 @@ export const userReducer = createReducer(
     ...state,
     users: state.users.filter((user) => user.id !== payload.id),
   })),
-
+  on(UserActions.load, state => ({
+    ...state,
+    loading: true,
+    error: null
+  })),
+  on(UserActions.loadSuccess, (state, payload) => ({
+    ...state,
+    users: payload.users,
+    loading: false
+  })),
+  on(UserActions.loadFailure, (state, payload) => ({
+    ...state,
+    loading: false,
+    error: payload.error
+  }))
 );

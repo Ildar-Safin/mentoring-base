@@ -1,10 +1,19 @@
-import {Todo} from "../../interfaces/todo-interface";
-import {createReducer, on} from "@ngrx/store";
-import {TodosActions} from "./todos.actions";
+import { Todo } from "../../interfaces/todo-interface";
+import { createReducer, on } from "@ngrx/store";
+import { TodosActions } from "./todos.actions";
 
-const initialState: { todo: Todo[]} = {
+interface TodoState {
+  todo: Todo[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: TodoState = {
   todo: [],
+  loading: false,
+  error: null
 };
+
 export const todoReducer = createReducer(
   initialState,
   on(TodosActions.set, (state, payload) =>({
@@ -14,11 +23,7 @@ export const todoReducer = createReducer(
   on(TodosActions.edit, (state, payload) =>({
     ...state,
     todo: state.todo.map((todo) => {
-      if (todo.id === payload.todo.id) {
-        return payload.todo;
-      } else {
-        return todo;
-      }
+      return todo.id === payload.todo.id ? payload.todo : todo;
     }),
   })),
   on(TodosActions.create, (state, payload) =>({
@@ -29,4 +34,19 @@ export const todoReducer = createReducer(
     ...state,
     todo: state.todo.filter((todo) => todo.id !== payload.id),
   })),
+  on(TodosActions.loadTodos, (state) => ({
+    ...state,
+    loading: true,
+    error: null
+  })),
+  on(TodosActions.loadTodosSuccess, (state, payload) => ({
+    ...state,
+    todo: payload.todos, // Обновляем массив todo
+    loading: false
+  })),
+  on(TodosActions.loadTodosFailure, (state, payload) => ({
+    ...state,
+    loading: false,
+    error: payload.error
+  }))
 );

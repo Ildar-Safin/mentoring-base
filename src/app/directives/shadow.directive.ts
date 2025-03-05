@@ -1,9 +1,10 @@
-import {Directive, ElementRef, HostListener, Renderer2} from "@angular/core";
+import { Directive, ElementRef, HostListener, Renderer2 } from "@angular/core";
 
 @Directive({
   selector: '[shadow]',
   standalone: true
 })
+
 export class ShadowDirective {
   constructor(
     private elementRef: ElementRef,
